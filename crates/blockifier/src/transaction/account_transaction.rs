@@ -627,8 +627,11 @@ impl AccountTransaction {
         let mut execution_state = TransactionalState::create_transactional(state);
 
         println!("[APOORV] gas before running execute tx is: {:?}", remaining_gas);
+        println!("this is exectuon context: {:?}", execution_context);
+        println!("this is transaction context: {:?}", tx_context);
         let execution_result =
             self.run_execute(&mut execution_state, &mut execution_context, remaining_gas);
+        println!("this is execution result {:?}", execution_result);
         println!("[APOORV] gas after running execute tx is222: {:?}", remaining_gas);
 
         // Pre-compute cost in case of revert.
