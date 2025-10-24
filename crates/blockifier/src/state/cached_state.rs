@@ -447,7 +447,7 @@ impl StateCache {
         self.initial_reads.declared_contracts.insert(class_hash, is_declared);
     }
 
-    fn get_storage_at(&self, contract_address: ContractAddress, key: StorageKey) -> Option<&Felt> {
+    pub fn get_storage_at(&self, contract_address: ContractAddress, key: StorageKey) -> Option<&Felt> {
         let contract_storage_key = (contract_address, key);
         self.writes
             .storage
@@ -455,7 +455,7 @@ impl StateCache {
             .or_else(|| self.initial_reads.storage.get(&contract_storage_key))
     }
 
-    fn get_nonce_at(&self, contract_address: ContractAddress) -> Option<&Nonce> {
+    pub fn get_nonce_at(&self, contract_address: ContractAddress) -> Option<&Nonce> {
         self.writes
             .nonces
             .get(&contract_address)
@@ -490,7 +490,7 @@ impl StateCache {
         self.writes.nonces.insert(contract_address, nonce);
     }
 
-    fn get_class_hash_at(&self, contract_address: ContractAddress) -> Option<&ClassHash> {
+    pub fn get_class_hash_at(&self, contract_address: ContractAddress) -> Option<&ClassHash> {
         self.writes
             .class_hashes
             .get(&contract_address)
@@ -509,7 +509,7 @@ impl StateCache {
         self.writes.class_hashes.insert(contract_address, class_hash);
     }
 
-    fn get_compiled_class_hash(&self, class_hash: ClassHash) -> Option<&CompiledClassHash> {
+    pub fn get_compiled_class_hash(&self, class_hash: ClassHash) -> Option<&CompiledClassHash> {
         self.writes
             .compiled_class_hashes
             .get(&class_hash)
