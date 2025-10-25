@@ -472,7 +472,7 @@ impl StateCache {
         self.initial_reads.storage.insert(contract_storage_key, value);
     }
 
-    fn set_storage_value(
+    pub fn set_storage_value(
         &mut self,
         contract_address: ContractAddress,
         key: StorageKey,
@@ -482,11 +482,11 @@ impl StateCache {
         self.writes.storage.insert(contract_storage_key, value);
     }
 
-    fn set_nonce_initial_value(&mut self, contract_address: ContractAddress, nonce: Nonce) {
+    pub fn set_nonce_initial_value(&mut self, contract_address: ContractAddress, nonce: Nonce) {
         self.initial_reads.nonces.insert(contract_address, nonce);
     }
 
-    fn set_nonce_value(&mut self, contract_address: ContractAddress, nonce: Nonce) {
+    pub fn set_nonce_value(&mut self, contract_address: ContractAddress, nonce: Nonce) {
         self.writes.nonces.insert(contract_address, nonce);
     }
 
